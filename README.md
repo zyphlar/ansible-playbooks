@@ -1,5 +1,10 @@
-ansible-playbooks
+My Ansible Playbooks
 =================
+
+This is just my repository of playbooks.
+
+* create-user.yml
+  * Creates a user with a password, a MySql DB, and an Apache virtual host.
 
 ### Setup Ansible
 
