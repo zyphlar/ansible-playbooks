@@ -23,6 +23,13 @@ You should see:
         "changed": false, 
         "ping": "pong"
     }
+
+### Install passlib (for create-user.yml)
+
+    wget https://passlib.googlecode.com/files/passlib-1.6.1.tar.gz
+    tar -zxvf passlib-1.6.1.tar.gz
+    cd passlib-1.6.1
+    python setup.py install
    
 ### Run the play
 
