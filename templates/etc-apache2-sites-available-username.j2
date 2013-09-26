@@ -1,0 +1,8 @@
+##
+# Ansible provided setup. See https://github.com/fourkitchens/server-playbooks.
+##
+<VirtualHost *:80>
+  ServerAdmin {{ apache_server_admin }}
+  ServerName {{ domain_name }}
+  DocumentRoot /home/{{ username }}/public_html
+</VirtualHost>

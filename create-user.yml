@@ -1,0 +1,62 @@
+##
+# Ansible playbook for creating a new user with their own mysql db and apache site
+#
+
+---
+- hosts: all
+  user: root
+
+  vars_files:
+    - settings.yml
+
+  vars_prompt:
+    - name: "domain_name"
+      prompt: "Domain Name"
+      private: no
+
+    - name: "username"
+      prompt: "Username"
+      private: no
+
+    - name: "user_fullname"
+      prompt: "Full Name"
+      private: no
+
+    - name: "user_password"
+      prompt: "Password"
+      private: yes
+      encrypt: "sha512_crypt"
+      salt_size: 8
+
+    - name: "mysql_password"
+      prompt: "MySQL Password"
+      private: yes
+
+  tasks:
+    ##
+    # Apt package installation of required software.
+    #
+    - name: Linux | Create User
+      user: name=$username comment="$user_fullname" password=$user_password shell="/bin/bash"
+      tags: common
+
+    - name: MySQL | Create Database
+      mysql_db: name="$username"
+      tags: mysql
+
+    - name: MySQL | Create User with host localhost and privs on own DB
+      mysql_user: user="$username" password="$mysql_password" host="localhost" priv="$username.*:ALL"
+      tags: mysql
+
+    - name: Apache | Create virtual host site
+      action: template src=templates/etc-apache2-sites-available-username.j2 dest=/etc/apache2/sites-available/{{ username }}
+      tags: apache
+
+    - name: Apache | Create document root
+      file: path=/home/$username/public_html owner=$username group=$username mode=0644 state=directory
+      tags: apache
+
+    - name: Apache | Enable site
+      action: command a2ensite {{ username }}
+      tags: apache
+
