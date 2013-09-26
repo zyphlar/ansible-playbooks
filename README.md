@@ -19,11 +19,11 @@ You can now test by typing:
 
 You should see:
 
-    localhost | success >> {
-      "module": "ping",
-      "ping": "pong
-    }
-    
+  localhost | success >> {
+      "changed": false, 
+      "ping": "pong"
+  }
+   
 ### Run the play
 
 By executing the following, it will setup only the commonly used components:
