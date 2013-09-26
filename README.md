@@ -19,10 +19,10 @@ You can now test by typing:
 
 You should see:
 
-  localhost | success >> {
-      "changed": false, 
-      "ping": "pong"
-  }
+    localhost | success >> {
+        "changed": false, 
+        "ping": "pong"
+    }
    
 ### Run the play
 
