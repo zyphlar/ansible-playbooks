@@ -8,7 +8,7 @@ This is just my repository of playbooks.
 
 ### Setup Ansible
 
-    sudo aptitude -y install git python-jinja2 python-yaml python-paramiko python-software-properties software-properties-common
+    sudo aptitude -y install git python-jinja2 python-yaml python-mysqldb python-paramiko python-software-properties software-properties-common
     add-apt-repository ppa:rquillo/ansible
     aptitude update && aptitude install ansible
     echo "localhost" > /etc/ansible/hosts
@@ -30,6 +30,14 @@ You should see:
     tar -zxvf passlib-1.6.1.tar.gz
     cd passlib-1.6.1
     python setup.py install
+
+### Check my.cnf
+
+You may need to set up a ~/.my.cnf file for the user you'll run this as:
+
+    [client]
+    user=root
+    password="mypassword"
    
 ### Run the play
 
