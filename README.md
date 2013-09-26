@@ -8,7 +8,7 @@ This is just my repository of playbooks.
 
 ### Setup Ansible
 
-    sudo aptitude -y install git python-jinja2 python-yaml python-paramiko python-software-properties
+    sudo aptitude -y install git python-jinja2 python-yaml python-paramiko python-software-properties software-properties-common
     add-apt-repository ppa:rquillo/ansible
     aptitude update && aptitude install ansible
     echo "localhost" > /etc/ansible/hosts
