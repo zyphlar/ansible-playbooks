@@ -56,6 +56,10 @@
       file: path=/home/$username/public_html owner=$username group=$username mode=0755 state=directory
       tags: apache
 
+    - name: Apache | Create index.html
+      template: src=templates/home-username-public_html-index.j2 dest=/home/$username/public_html/index.html
+      tags: file
+
     - name: Apache | Enable site
       command: a2ensite {{ username }}
       tags: apache
