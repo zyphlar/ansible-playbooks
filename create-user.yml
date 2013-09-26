@@ -24,13 +24,13 @@
 
     - name: "user_password"
       prompt: "Password"
-      private: yes
+      private: no
       encrypt: "sha512_crypt"
       salt_size: 8
 
     - name: "mysql_password"
       prompt: "MySQL Password"
-      private: yes
+      private: no
 
   tasks:
     ##
@@ -49,14 +49,17 @@
       tags: mysql
 
     - name: Apache | Create virtual host site
-      action: template src=templates/etc-apache2-sites-available-username.j2 dest=/etc/apache2/sites-available/{{ username }}
+      template: src=templates/etc-apache2-sites-available-username.j2 dest=/etc/apache2/sites-available/{{ username }}
       tags: apache
 
     - name: Apache | Create document root
-      file: path=/home/$username/public_html owner=$username group=$username mode=0644 state=directory
+      file: path=/home/$username/public_html owner=$username group=$username mode=0755 state=directory
       tags: apache
 
     - name: Apache | Enable site
-      action: command a2ensite {{ username }}
+      command: a2ensite {{ username }}
       tags: apache
 
+    - name: Apache | Reload service
+      command: service apache2 reload
+      tags: apache
