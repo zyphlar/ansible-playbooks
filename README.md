@@ -15,7 +15,7 @@ This is just my repository of playbooks.
 
 You can now test by typing:
 
-    ansible-playbook -c local --tags="common,mysql,apache" ./create-user.yml
+    ansible -c local -m ping all
 
 You should see:
 
@@ -43,6 +43,6 @@ You may need to set up a ~/.my.cnf file for the user you'll run this as (you'll 
 
 By executing the following, it will setup only the commonly used components:
 
-    ansible-playbook -c local --tags="common" ./create-user.yml
+    ansible-playbook -c local --tags="common,mysql,apache,file" ./create-user.yml
     
 You can also just run the run-all script.
