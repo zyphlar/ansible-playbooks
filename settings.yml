@@ -3,5 +3,5 @@
 # your needs.
 
 # apache
-apache_server_admin: 'webmaster@testa.hsl.dn42'
+apache_server_admin: 'webmaster@example.com'
 
