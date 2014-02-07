@@ -11,11 +11,11 @@
 
   vars_prompt:
     - name: "domain_name"
-      prompt: "Domain Name"
+      prompt: "Domain Name (www. will be prepended as an alias)"
       private: no
 
     - name: "username"
-      prompt: "Username"
+      prompt: "Username (max 16 chars)"
       private: no
 
     - name: "user_fullname"
