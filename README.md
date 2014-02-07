@@ -15,7 +15,7 @@ This is just my repository of playbooks.
 
 You can now test by typing:
 
-    ansible -c local -m ping all
+    ansible-playbook -c local --tags="common,mysql,apache" ./create-user.yml
 
 You should see:
 
@@ -33,7 +33,7 @@ You should see:
 
 ### Check my.cnf
 
-You may need to set up a ~/.my.cnf file for the user you'll run this as:
+You may need to set up a ~/.my.cnf file for the user you'll run this as (you'll probably need the user specified in the file, not just the password!):
 
     [client]
     user=root
