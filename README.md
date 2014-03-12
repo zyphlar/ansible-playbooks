@@ -46,3 +46,9 @@ By executing the following, it will setup only the commonly used components:
     ansible-playbook -c local --tags="common,mysql,apache,file" ./create-user.yml
     
 You can also just run the run-all script.
+
+### For Wordpress
+
+Make sure the public_html folder is owned by the www-data group, and that all users are members of that group.
+Also add `umask 002` to `/etc/apache2/envvars`
+and add `define( 'FS_METHOD', 'direct' );` to wp-config.php
