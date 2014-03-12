@@ -49,6 +49,8 @@ You can also just run the run-all script.
 
 ### For Wordpress
 
-Make sure the public_html folder is owned by the www-data group, and that all users are members of that group.
-Also add `umask 002` to `/etc/apache2/envvars`
-and add `define( 'FS_METHOD', 'direct' );` to wp-config.php
+    chmod 775 -R /home/$user/public_html
+    chown :www-data -R /home/$user/public_html
+    usermod -G www-data $user
+    echo "umask 002" >> /etc/apache2/envvars
+    echo "define( 'FS_METHOD', 'direct' );" >> /home/$user/public_html/wp-config.php
